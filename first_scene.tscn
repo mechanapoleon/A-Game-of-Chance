@@ -1,0 +1,177 @@
+[gd_scene load_steps=10 format=3 uid="uid://bpfsjpdl61tgp"]
+
+[ext_resource type="Texture2D" uid="uid://cgeun2htb72dr" path="res://Images/background.jpeg" id="1_3qgiw"]
+[ext_resource type="Script" path="res://first_scene.gd" id="1_a0uur"]
+[ext_resource type="Texture2D" uid="uid://ct4goxaadnwdf" path="res://Images/Soldier1.jpeg" id="1_ifej5"]
+[ext_resource type="Texture2D" uid="uid://6qa4rbvmfw3" path="res://Images/Spy1.jpeg" id="2_l6bvv"]
+[ext_resource type="Texture2D" uid="uid://bdbekg482ltb2" path="res://Images/Enemy1.jpeg" id="2_rivnk"]
+[ext_resource type="Script" path="res://SoldierCard.gd" id="4_xwswc"]
+[ext_resource type="Script" path="res://DialogPanel.gd" id="7_kgceg"]
+[ext_resource type="FontFile" uid="uid://ceabnglfuwkn4" path="res://Roboto/Roboto-Regular.ttf" id="8_2uqpf"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqbie"]
+size = Vector2(10, 10)
+
+[node name="FirstScene" type="Node2D"]
+position = Vector2(7, -8)
+script = ExtResource("1_a0uur")
+
+[node name="BackGround" type="Sprite2D" parent="."]
+position = Vector2(596, 624)
+scale = Vector2(1.25391, 1.25391)
+texture = ExtResource("1_3qgiw")
+
+[node name="SoldierCard" type="Sprite2D" parent="."]
+position = Vector2(300, 480)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_ifej5")
+centered = false
+script = ExtResource("4_xwswc")
+
+[node name="Area2D" type="Area2D" parent="SoldierCard"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SoldierCard/Area2D"]
+position = Vector2(500, 480)
+scale = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_sqbie")
+
+[node name="SpyCard" type="Sprite2D" parent="."]
+position = Vector2(100, 480)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_l6bvv")
+centered = false
+script = ExtResource("4_xwswc")
+
+[node name="Area2D" type="Area2D" parent="SpyCard"]
+scale = Vector2(0.300008, 0.31235)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpyCard/Area2D"]
+position = Vector2(1577.74, 1558.08)
+scale = Vector2(350, 350)
+shape = SubResource("RectangleShape2D_sqbie")
+
+[node name="EnemyCard" type="Sprite2D" parent="."]
+position = Vector2(500, 480)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_rivnk")
+centered = false
+script = ExtResource("4_xwswc")
+
+[node name="Area2D" type="Area2D" parent="EnemyCard"]
+scale = Vector2(0.300008, 0.313509)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCard/Area2D"]
+position = Vector2(1622.18, 1297.14)
+scale = Vector2(350, 350)
+shape = SubResource("RectangleShape2D_sqbie")
+
+[node name="Draw" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="End Turn" type="TextureRect" parent="."]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sheet" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 20.0
+offset_top = 36.0
+offset_right = 60.0
+offset_bottom = 76.0
+
+[node name="LifePointsLabel" type="Label" parent="Sheet"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "Life Points"
+
+[node name="ManaLabel" type="Label" parent="Sheet"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 34.0
+offset_right = 46.0
+offset_bottom = 60.0
+text = "Mana"
+
+[node name="SanityLabel" type="Label" parent="Sheet"]
+layout_mode = 0
+offset_top = 65.0
+offset_right = 90.0
+offset_bottom = 91.0
+text = "SanityLabel
+"
+
+[node name="Buttons" type="VBoxContainer" parent="."]
+offset_left = 732.0
+offset_top = 500.0
+offset_right = 822.0
+offset_bottom = 601.0
+
+[node name="PlayCardButton" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Play Card"
+
+[node name="DrawCardButton" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "Draw Card"
+
+[node name="EndTurnButton" type="Button" parent="Buttons"]
+layout_mode = 2
+text = "End Turn"
+
+[node name="DialogPanel" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 858.0
+offset_right = 898.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("7_kgceg")
+
+[node name="ColorRect" type="ColorRect" parent="DialogPanel"]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 9.0
+offset_right = 287.0
+offset_bottom = 623.0
+color = Color(0, 0, 0, 1)
+
+[node name="Name" type="RichTextLabel" parent="DialogPanel"]
+layout_mode = 2
+offset_top = 10.0
+offset_right = 278.0
+offset_bottom = 79.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("8_2uqpf")
+bbcode_enabled = true
+text = "Name"
+
+[node name="TextBox" type="RichTextLabel" parent="DialogPanel"]
+layout_mode = 2
+offset_left = -4.0
+offset_top = 91.0
+offset_right = 281.0
+offset_bottom = 275.0
+theme_override_fonts/normal_font = ExtResource("8_2uqpf")
+theme_override_fonts/mono_font = ExtResource("8_2uqpf")
+bbcode_enabled = true
+text = "something to the text here"
+
+[node name="Indicator" type="Polygon2D" parent="DialogPanel"]
+
+[node name="Timer" type="Timer" parent="DialogPanel"]
+
+[node name="Portrait" type="TextureRect" parent="DialogPanel"]
+layout_mode = 0
+offset_left = -107.0
+offset_top = 8.0
+offset_right = -9.0
+offset_bottom = 100.0
+
+[connection signal="pressed" from="Buttons/PlayCardButton" to="." method="_on_play_card_button_pressed"]

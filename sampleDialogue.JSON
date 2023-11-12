@@ -1,0 +1,18 @@
+[
+    {
+        "Name" : "Alice",
+        "Text" : "Welcome to a new game. Click on the games."
+    },
+    {
+        "Name" : "Bob",
+        "Text" : "K whatever."
+    },
+    {
+        "Name" : "Alice",
+        "Text" : "Listen up kid. Freedom ain't free."
+    },
+    {
+        "Name" : "Alice",
+        "Text" : "Final dialog."
+    }    
+]

@@ -1,0 +1,56 @@
+[gd_scene load_steps=5 format=3 uid="uid://daujqaslmcgso"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_bnll5"]
+[ext_resource type="Texture2D" uid="uid://bmah68c3fe1pa" path="res://Images/town3.jpeg" id="2_y6o8d"]
+[ext_resource type="FontFile" uid="uid://ceabnglfuwkn4" path="res://Roboto/Roboto-Regular.ttf" id="3_512fh"]
+
+[sub_resource type="Theme" id="Theme_cyxd2"]
+default_font = ExtResource("3_512fh")
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bnll5")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(1.12, 1.12)
+texture = ExtResource("2_y6o8d")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -134.0
+offset_top = -142.0
+offset_right = -92.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4.94941, 4.94941)
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme = SubResource("Theme_cyxd2")
+theme_override_fonts/font = ExtResource("3_512fh")
+text = "Play"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_fonts/font = ExtResource("3_512fh")
+theme_override_font_sizes/font_size = 0
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
