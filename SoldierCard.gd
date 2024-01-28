@@ -1,5 +1,8 @@
 extends Sprite2D 
 
+#chiama delle funzioni da DialoguePanel per interagire con la dialogue box
+signal cardClicked(dialogKey: String, flag: bool)
+ 
 
 # Variabili per memorizzare la posizione originale e l'illuminazione della carta
 var original_position
@@ -15,7 +18,7 @@ func _ready():
 	$Area2D.mouse_entered.connect(self._on_mouse_entered)
 	$Area2D.mouse_exited.connect(self._on_mouse_exited)
 	$Area2D.input_event.connect(self._on_input_event)
-
+	
 # Funzione chiamata quando il mouse entra nell'area della carta
 func _on_mouse_entered():
 	# Illumina la carta aumentando il valore di modulate
@@ -29,7 +32,11 @@ func _on_mouse_exited():
 	modulate = original_modulate
 	position = original_position
 
-
+func _onDialogueTriggered(dialogueKey: String):
+	# Esegui le azioni necessarie quando il dialogo è attivato
+	# Puoi usare la chiave dialogueKey qui
+	print("Dialogo attivato con chiave:", dialogueKey)
+	
 
 func _on_input_event(viewport, event, shape_idx):
 	# Controlla se l'evento è un clic del mouse sinistro
@@ -39,4 +46,8 @@ func _on_input_event(viewport, event, shape_idx):
 		tween.set_trans(Tween.TRANS_BACK)
 		tween.set_ease(Tween.EASE_OUT)
 		tween.tween_property(self, "position", center_position, 0.5)
+#		print(dialoguePanelNode)
+#		dialoguePanelNode.triggerDialogue("AfterYouMove")
+		cardClicked.emit("AfterYouMove", true)		
 
+	

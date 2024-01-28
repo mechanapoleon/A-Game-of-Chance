@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://6qa4rbvmfw3" path="res://Images/Spy1.jpeg" id="2_l6bvv"]
 [ext_resource type="Texture2D" uid="uid://bdbekg482ltb2" path="res://Images/Enemy1.jpeg" id="2_rivnk"]
 [ext_resource type="Script" path="res://SoldierCard.gd" id="4_xwswc"]
-[ext_resource type="Script" path="res://DialogPanel.gd" id="7_kgceg"]
+[ext_resource type="Script" path="res://DialoguePanel.gd" id="7_fj1pe"]
 [ext_resource type="FontFile" uid="uid://ceabnglfuwkn4" path="res://Roboto/Roboto-Regular.ttf" id="8_2uqpf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqbie"]
@@ -123,7 +123,7 @@ text = "Draw Card"
 layout_mode = 2
 text = "End Turn"
 
-[node name="DialogPanel" type="Control" parent="."]
+[node name="DialoguePanel" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_left = 858.0
@@ -131,9 +131,9 @@ offset_right = 898.0
 offset_bottom = 40.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("7_kgceg")
+script = ExtResource("7_fj1pe")
 
-[node name="ColorRect" type="ColorRect" parent="DialogPanel"]
+[node name="ColorRect" type="ColorRect" parent="DialoguePanel"]
 layout_mode = 0
 offset_left = -4.0
 offset_top = 9.0
@@ -141,7 +141,7 @@ offset_right = 287.0
 offset_bottom = 623.0
 color = Color(0, 0, 0, 1)
 
-[node name="Name" type="RichTextLabel" parent="DialogPanel"]
+[node name="Name" type="RichTextLabel" parent="DialoguePanel"]
 layout_mode = 2
 offset_top = 10.0
 offset_right = 278.0
@@ -152,7 +152,7 @@ theme_override_fonts/normal_font = ExtResource("8_2uqpf")
 bbcode_enabled = true
 text = "Name"
 
-[node name="TextBox" type="RichTextLabel" parent="DialogPanel"]
+[node name="TextBox" type="RichTextLabel" parent="DialoguePanel"]
 layout_mode = 2
 offset_left = -4.0
 offset_top = 91.0
@@ -163,15 +163,16 @@ theme_override_fonts/mono_font = ExtResource("8_2uqpf")
 bbcode_enabled = true
 text = "something to the text here"
 
-[node name="Indicator" type="Polygon2D" parent="DialogPanel"]
+[node name="Indicator" type="Polygon2D" parent="DialoguePanel"]
 
-[node name="Timer" type="Timer" parent="DialogPanel"]
+[node name="Timer" type="Timer" parent="DialoguePanel"]
 
-[node name="Portrait" type="TextureRect" parent="DialogPanel"]
+[node name="Portrait" type="TextureRect" parent="DialoguePanel"]
 layout_mode = 0
 offset_left = -107.0
 offset_top = 8.0
 offset_right = -9.0
 offset_bottom = 100.0
 
+[connection signal="cardClicked" from="SoldierCard" to="DialoguePanel" method="_triggerDialogue"]
 [connection signal="pressed" from="Buttons/PlayCardButton" to="." method="_on_play_card_button_pressed"]
