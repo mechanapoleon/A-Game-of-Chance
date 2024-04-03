@@ -37,6 +37,7 @@ func getDialogue() -> Array:
 		file.close()
 		var json = JSON.new()
 		var error = json.parse(json_text)
+		print(json_text)
 		if error == OK:
 			var data_received = json.data
 			if typeof(data_received) == TYPE_DICTIONARY or typeof(data_received) == TYPE_ARRAY:
@@ -85,7 +86,6 @@ func readJSON(json_file_path):
 	return finish
 
 func _triggerDialogue(dialogueKey: String, flag: bool):
-	print("triggered dialogue")
 	var jsonData = readJSON(dialoguePath)
 	
 	for entry in jsonData:
