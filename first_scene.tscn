@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bpfsjpdl61tgp"]
+[gd_scene load_steps=13 format=3 uid="uid://bpfsjpdl61tgp"]
 
 [ext_resource type="Texture2D" uid="uid://cgeun2htb72dr" path="res://Images/background.jpeg" id="1_3qgiw"]
 [ext_resource type="Script" path="res://first_scene.gd" id="1_a0uur"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://SoldierCard.gd" id="4_xwswc"]
 [ext_resource type="Script" path="res://DialoguePanel.gd" id="7_fj1pe"]
 [ext_resource type="FontFile" uid="uid://ceabnglfuwkn4" path="res://Roboto/Roboto-Regular.ttf" id="8_2uqpf"]
+[ext_resource type="Script" path="res://LocationGrid.gd" id="9_ni2kf"]
+[ext_resource type="Script" path="res://LocationCard.gd" id="10_m4fda"]
+[ext_resource type="Texture2D" uid="uid://dex20gi4ot57o" path="res://Images/LocationCards/loc1back.png" id="11_n2scl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqbie"]
 size = Vector2(10, 10)
@@ -17,7 +20,7 @@ position = Vector2(7, -8)
 script = ExtResource("1_a0uur")
 
 [node name="BackGround" type="Sprite2D" parent="."]
-position = Vector2(596, 624)
+position = Vector2(599, 635)
 scale = Vector2(1.25391, 1.25391)
 texture = ExtResource("1_3qgiw")
 
@@ -61,7 +64,7 @@ script = ExtResource("4_xwswc")
 scale = Vector2(0.300008, 0.313509)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyCard/Area2D"]
-position = Vector2(1622.18, 1297.14)
+position = Vector2(1799.95, 1424.73)
 scale = Vector2(350, 350)
 shape = SubResource("RectangleShape2D_sqbie")
 
@@ -173,6 +176,45 @@ offset_left = -107.0
 offset_top = 8.0
 offset_right = -9.0
 offset_bottom = 100.0
+
+[node name="LocationGrid" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 352.0
+offset_top = 64.0
+offset_right = 652.0
+offset_bottom = 364.0
+script = ExtResource("9_ni2kf")
+
+[node name="UpperLeftLocationCard" type="Button" parent="LocationGrid"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+script = ExtResource("10_m4fda")
+
+[node name="UpperLeftTexture" type="TextureRect" parent="LocationGrid/UpperLeftLocationCard"]
+custom_minimum_size = Vector2(75, 75)
+layout_mode = 0
+offset_right = 125.0
+offset_bottom = 125.0
+texture = ExtResource("11_n2scl")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="UpperRightLocationCard" type="Button" parent="LocationGrid"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="LowerLeftLocationCard" type="Button" parent="LocationGrid"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+
+[node name="LowerRightLocationCard" type="Button" parent="LocationGrid"]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
 
 [connection signal="cardClicked" from="SoldierCard" to="DialoguePanel" method="_triggerDialogue"]
 [connection signal="pressed" from="Buttons/PlayCardButton" to="." method="_on_play_card_button_pressed"]
