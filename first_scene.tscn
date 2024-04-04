@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bpfsjpdl61tgp"]
+[gd_scene load_steps=20 format=3 uid="uid://bpfsjpdl61tgp"]
 
 [ext_resource type="Texture2D" uid="uid://cgeun2htb72dr" path="res://Images/background.jpeg" id="1_3qgiw"]
 [ext_resource type="Script" path="res://first_scene.gd" id="1_a0uur"]
@@ -11,6 +11,13 @@
 [ext_resource type="Script" path="res://LocationGrid.gd" id="9_ni2kf"]
 [ext_resource type="Script" path="res://LocationCard.gd" id="10_m4fda"]
 [ext_resource type="Texture2D" uid="uid://dex20gi4ot57o" path="res://Images/LocationCards/loc1back.png" id="11_n2scl"]
+[ext_resource type="Texture2D" uid="uid://baqubsdgbbg2u" path="res://Images/LocationCards/loc1front.png" id="12_evqtw"]
+[ext_resource type="Texture2D" uid="uid://drg6ts22si7nw" path="res://Images/LocationCards/loc2back.png" id="13_j8qpn"]
+[ext_resource type="Texture2D" uid="uid://dkp4nv6mf6jyu" path="res://Images/LocationCards/loc2front.png" id="14_maf3x"]
+[ext_resource type="Texture2D" uid="uid://btbyyp13ny8hj" path="res://Images/LocationCards/loc3back.png" id="15_mxppw"]
+[ext_resource type="Texture2D" uid="uid://dlprkx65gvyt6" path="res://Images/LocationCards/loc3front.png" id="16_g4s8o"]
+[ext_resource type="Texture2D" uid="uid://b060epps7lksi" path="res://Images/LocationCards/loc4back.png" id="17_7r74b"]
+[ext_resource type="Texture2D" uid="uid://caamoovgfyu5i" path="res://Images/LocationCards/loc4front.png" id="18_b0yul"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqbie"]
 size = Vector2(10, 10)
@@ -188,33 +195,85 @@ script = ExtResource("9_ni2kf")
 
 [node name="UpperLeftLocationCard" type="Button" parent="LocationGrid"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_right = 150.0
+offset_bottom = 150.0
+text = "Upper Right"
 script = ExtResource("10_m4fda")
+cardNumber = 1
+card_texture_back = ExtResource("11_n2scl")
+card_texture_front = ExtResource("12_evqtw")
 
-[node name="UpperLeftTexture" type="TextureRect" parent="LocationGrid/UpperLeftLocationCard"]
-custom_minimum_size = Vector2(75, 75)
+[node name="CardTexture" type="TextureRect" parent="LocationGrid/UpperLeftLocationCard"]
 layout_mode = 0
-offset_right = 125.0
-offset_bottom = 125.0
-texture = ExtResource("11_n2scl")
+offset_right = 150.0
+offset_bottom = 150.0
 expand_mode = 1
 stretch_mode = 4
 
 [node name="UpperRightLocationCard" type="Button" parent="LocationGrid"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 150.0
+offset_right = 300.0
+offset_bottom = 150.0
+text = "Upper Right"
+script = ExtResource("10_m4fda")
+cardNumber = 2
+card_texture_back = ExtResource("13_j8qpn")
+card_texture_front = ExtResource("14_maf3x")
+
+[node name="CardTexture" type="TextureRect" parent="LocationGrid/UpperRightLocationCard"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
 
 [node name="LowerLeftLocationCard" type="Button" parent="LocationGrid"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_top = 150.0
+offset_right = 150.0
+offset_bottom = 300.0
+text = "Lower Right"
+script = ExtResource("10_m4fda")
+cardNumber = 3
+card_texture_back = ExtResource("15_mxppw")
+card_texture_front = ExtResource("16_g4s8o")
+
+[node name="CardTexture" type="TextureRect" parent="LocationGrid/LowerLeftLocationCard"]
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
 
 [node name="LowerRightLocationCard" type="Button" parent="LocationGrid"]
 layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+offset_left = 150.0
+offset_top = 150.0
+offset_right = 300.0
+offset_bottom = 300.0
+text = "Lower Left"
+script = ExtResource("10_m4fda")
+cardNumber = 4
+card_texture_back = ExtResource("17_7r74b")
+card_texture_front = ExtResource("18_b0yul")
+
+[node name="CardTexture" type="TextureRect" parent="LocationGrid/LowerRightLocationCard"]
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 4
 
 [connection signal="cardClicked" from="SoldierCard" to="DialoguePanel" method="_triggerDialogue"]
 [connection signal="pressed" from="Buttons/PlayCardButton" to="." method="_on_play_card_button_pressed"]
+[connection signal="mouse_entered" from="LocationGrid/UpperLeftLocationCard" to="LocationGrid/UpperLeftLocationCard" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="LocationGrid/UpperLeftLocationCard" to="LocationGrid/UpperLeftLocationCard" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="LocationGrid/UpperLeftLocationCard" to="LocationGrid/UpperLeftLocationCard" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="LocationGrid/UpperRightLocationCard" to="LocationGrid/UpperRightLocationCard" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="LocationGrid/UpperRightLocationCard" to="LocationGrid/UpperRightLocationCard" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="LocationGrid/UpperRightLocationCard" to="LocationGrid/UpperRightLocationCard" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="LocationGrid/LowerLeftLocationCard" to="LocationGrid/LowerLeftLocationCard" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="LocationGrid/LowerLeftLocationCard" to="LocationGrid/LowerLeftLocationCard" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="LocationGrid/LowerLeftLocationCard" to="LocationGrid/LowerLeftLocationCard" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="LocationGrid/LowerRightLocationCard" to="LocationGrid/LowerRightLocationCard" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="LocationGrid/LowerRightLocationCard" to="LocationGrid/LowerRightLocationCard" method="_on_Button_mouse_exited"]
+[connection signal="pressed" from="LocationGrid/LowerRightLocationCard" to="LocationGrid/LowerRightLocationCard" method="_on_Button_pressed"]
