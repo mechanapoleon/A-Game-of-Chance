@@ -21,4 +21,4 @@ SignalBus="*res://Scripts/SignalBus.gd"
 
 [rendering]
 
-renderer/rendering_method="mobile"
+renderer/rendering_method="gl_compatibility"
