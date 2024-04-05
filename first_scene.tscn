@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bpfsjpdl61tgp"]
+[gd_scene load_steps=24 format=3 uid="uid://bpfsjpdl61tgp"]
 
 [ext_resource type="Texture2D" uid="uid://cgeun2htb72dr" path="res://Images/background.jpeg" id="1_3qgiw"]
 [ext_resource type="Script" path="res://first_scene.gd" id="1_a0uur"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://caamoovgfyu5i" path="res://Images/LocationCards/loc4front.png" id="18_b0yul"]
 [ext_resource type="Script" path="res://PlayerCard.gd" id="19_b4nea"]
 [ext_resource type="Texture2D" uid="uid://dfao8o1km54dj" path="res://Images/Soldier2.jpeg" id="20_a83cy"]
+[ext_resource type="Script" path="res://Deck.gd" id="21_rm1tx"]
+[ext_resource type="Texture2D" uid="uid://cwhntgri0nsai" path="res://Images/DeckCards/retrocartescopa.png" id="22_qg2v7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqbie"]
 size = Vector2(10, 10)
@@ -81,10 +83,12 @@ scale = Vector2(350, 350)
 shape = SubResource("RectangleShape2D_sqbie")
 
 [node name="Draw" type="TextureRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="End Turn" type="TextureRect" parent="."]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -119,6 +123,7 @@ text = "SanityLabel
 "
 
 [node name="Buttons" type="VBoxContainer" parent="."]
+visible = false
 offset_left = 732.0
 offset_top = 500.0
 offset_right = 822.0
@@ -281,6 +286,8 @@ custom_minimum_size = Vector2(120, 180)
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+text = "Player's 
+Card 1"
 script = ExtResource("19_b4nea")
 player_card_texture = ExtResource("20_a83cy")
 
@@ -297,6 +304,8 @@ layout_mode = 0
 offset_left = 100.0
 offset_right = 220.0
 offset_bottom = 180.0
+text = "Player's 
+Card 2"
 script = ExtResource("19_b4nea")
 player_card_texture = ExtResource("20_a83cy")
 
@@ -313,6 +322,8 @@ layout_mode = 0
 offset_left = 200.0
 offset_right = 320.0
 offset_bottom = 180.0
+text = "Player's 
+Card 3"
 script = ExtResource("19_b4nea")
 player_card_texture = ExtResource("20_a83cy")
 
@@ -329,6 +340,8 @@ layout_mode = 0
 offset_left = 300.0
 offset_right = 420.0
 offset_bottom = 180.0
+text = "Player's 
+Card 4"
 script = ExtResource("19_b4nea")
 player_card_texture = ExtResource("20_a83cy")
 
@@ -345,6 +358,8 @@ layout_mode = 0
 offset_left = 400.0
 offset_right = 520.0
 offset_bottom = 180.0
+text = "Player's 
+Card 5"
 script = ExtResource("19_b4nea")
 player_card_texture = ExtResource("20_a83cy")
 
@@ -361,10 +376,36 @@ layout_mode = 0
 offset_left = 500.0
 offset_right = 620.0
 offset_bottom = 180.0
+text = "Player's
+Card 6"
 script = ExtResource("19_b4nea")
 player_card_texture = ExtResource("20_a83cy")
 
 [node name="PlayerCardTexture" type="TextureRect" parent="Hand/PlayerCard6"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Deck" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 700.0
+offset_top = 470.0
+offset_right = 820.0
+offset_bottom = 650.0
+
+[node name="DeckCard" type="Button" parent="Deck"]
+custom_minimum_size = Vector2(120, 180)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 180.0
+text = "Deck"
+script = ExtResource("21_rm1tx")
+deck_texture = ExtResource("22_qg2v7")
+
+[node name="DeckTexture" type="TextureRect" parent="Deck/DeckCard"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -397,3 +438,5 @@ stretch_mode = 5
 [connection signal="mouse_exited" from="Hand/PlayerCard5" to="Hand/PlayerCard5" method="_on_Button_mouse_exited"]
 [connection signal="mouse_entered" from="Hand/PlayerCard6" to="Hand/PlayerCard6" method="_on_Button_mouse_entered"]
 [connection signal="mouse_exited" from="Hand/PlayerCard6" to="Hand/PlayerCard6" method="_on_Button_mouse_exited"]
+[connection signal="mouse_entered" from="Deck/DeckCard" to="Deck/DeckCard" method="_on_Button_mouse_entered"]
+[connection signal="mouse_exited" from="Deck/DeckCard" to="Deck/DeckCard" method="_on_Button_mouse_exited"]
