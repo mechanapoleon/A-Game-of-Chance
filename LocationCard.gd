@@ -16,16 +16,14 @@ func _ready():
 #	flipCard()
 
 func _on_Button_mouse_entered():
-	if isFaceUp:
-		var cardTexture = $CardTexture
-		if cardTexture:
-			cardTexture.modulate = Color(0.8, 0.8, 0.8)  # Change the texture color when mouse enters
+	var cardTexture = $CardTexture
+	if cardTexture:
+		cardTexture.modulate = Color(0.8, 0.8, 0.8)  # Change the texture color when mouse enters
 
 func _on_Button_mouse_exited():
-	if isFaceUp:
-		var cardTexture = $CardTexture
-		if cardTexture:
-			cardTexture.modulate = Color(1, 1, 1)  # Reset the texture color when mouse exits
+	var cardTexture = $CardTexture
+	if cardTexture:
+		cardTexture.modulate = Color(1, 1, 1)  # Reset the texture color when mouse exits
 			
 func _on_Button_pressed():
 	flipCard()
@@ -33,6 +31,7 @@ func _on_Button_pressed():
 func flipCard():
 	print("Flipping card")
 	print("isFaceUp: " + str(isFaceUp))
+	$CardTexture.modulate = Color(1, 1, 1)  # Reset the texture color when mouse exits
 	isFaceUp = !isFaceUp
 	update_card_visual()
 

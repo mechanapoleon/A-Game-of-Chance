@@ -240,6 +240,7 @@ card_texture_back = ExtResource("15_mxppw")
 card_texture_front = ExtResource("16_g4s8o")
 
 [node name="CardTexture" type="TextureRect" parent="LocationGrid/LowerLeftLocationCard"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 expand_mode = 1
@@ -258,6 +259,7 @@ card_texture_back = ExtResource("17_7r74b")
 card_texture_front = ExtResource("18_b0yul")
 
 [node name="CardTexture" type="TextureRect" parent="LocationGrid/LowerRightLocationCard"]
+layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 expand_mode = 1
